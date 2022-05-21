@@ -1,0 +1,23 @@
+.new-tweet {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.tweet-text-header {
+  display: flex;
+  flex-direction: column;
+  resize: none;
+  width: 100%;
+}
+/* .tweet-text {
+  display: flex;
+  justify-content: center;
+  resize: none;
+} */
+
+.submit-btn-counter {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Bungee', sans-serif;
+}

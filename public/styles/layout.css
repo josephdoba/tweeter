@@ -9,17 +9,36 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
-
 /*
  * Global layout stuff
  */
-
 body {
+  font-family: 'Source Sans Pro', sans-serif;
   color: #545149;
-  background-color: #f4f1ec;
+  background-color: #00692a;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
   font-size: 24px;
-}
 
+  /* background-color: #008268;
+  background-image: url("https://www.transparenttextures.com/patterns/bedge-grunge.png"); */
+
+  
+
+  /* background-color: #00345c;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png"); */
+}
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+ .bungee-font {
+  font-family: 'Bungee', cursive;
+ }
+
+ .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 10%;
+  margin-right: 10%;
+ }

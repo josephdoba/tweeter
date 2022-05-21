@@ -1,0 +1,21 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background: #4056A1;
+  color: #FFFFFF;
+  padding: 1.5em;
+}
+
+.write-tweet-arrow {
+  display: flex;
+  justify-content: center;
+  color: #ff7800;
+}
+
+.profile-header-format {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 400px;
+}
