@@ -1,23 +1,34 @@
 .new-tweet {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
+  width: 100%;
+  margin: 1em 0;
 }
 
-.tweet-text-header {
+.new-tweet form {
   display: flex;
   flex-direction: column;
-  resize: none;
-  width: 100%;
 }
-/* .tweet-text {
-  display: flex;
-  justify-content: center;
+
+.new-tweet form label {
+  font-weight: bold;
+}
+
+.new-tweet form textarea {
   resize: none;
-} */
+  border: none;
+  border-bottom: 1px solid;
+  outline: none;
+  margin-bottom: 1em;
+}
+
+.new-tweet form div {
+  display: flex;
+  justify-content: space-between;
+}
 
 .submit-btn-counter {
   display: flex;
   justify-content: space-between;
   font-family: 'Bungee', sans-serif;
 }
+
+

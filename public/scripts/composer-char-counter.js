@@ -1,8 +1,7 @@
 $(document).ready(function(event) {
   console.log("Hello from char counter.js");
-
   
-  $('.tweet-text-header').on('input',function() {
+  $('.new-tweet-form-textarea').on('input',function() {
     console.log("some crypto coin has been pumped");
     const word = $(this).val().length;
     console.log(word);
@@ -10,9 +9,7 @@ $(document).ready(function(event) {
 
     $('.counter').text(limit - word);
 
-
-
-  
   });
+  
 
 });

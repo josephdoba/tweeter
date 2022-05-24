@@ -1,77 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Information -->
-    <title>Tweeter - Home Page</title>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
+<head>
+  <!-- Meta Information -->
+  <title>Tweeter: Elons Pump & Dump schemes and NFTs</title>
 
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- External font "Bungee" and "Source Sans Pro - light 300 and bold 600"-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:wght@300;600&display=swap"
+    rel="stylesheet">
 
-    <!-- Nav CSS -->
-    <link rel="stylesheet" href="/styles/nav.css" type="text/css">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- New Tweet CSS -->
-    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css">
+  <!-- Custom internal App CSS -->
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css">
+  <link rel="stylesheet" href="/styles/header.css" type="text/css">
+  <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css">
+  <link rel="stylesheet" href="/styles/existing-tweets.css" type="text/css">
+  <link rel="stylesheet" href="/styles/hover.css" type="text/css">
 
-    <!-- External font "Bungee" -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <!-- External font "Source Sans Pro - light 300 and bold 600" -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet">
+  <!-- Custom internal App JS -->
+  <script type="text/javascript" src="/scripts/client.js"></script>
+  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+  <script type="text/javascript" src="/scripts/hover.js"></script>
+</head>
 
-    <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<body>
+  <!-- Top nav bar (position-fixed) -->
+  <nav class="navbar-top">
+    <span class="navbar-brand">Tweeter: Elon's Pump & Dump schemes and NFTs</span>
+    <div class="navbar-menu">
+      <span><b>Write </b>a new tweet</span>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+  </nav>
 
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
-
-    <!-- Character counter JS -->
-    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-
-    <!-- font awesome library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
-  </head>
-
-  <body>
-    <!-- Top nav bar (fixed) -->
-    <nav class="navbar">
-      <span class="bungee-font">Tweeter- Elon's pump&dump schemes and NFTs</span>
-      <div class="write-tweet-format">
-        <span class="write-tweet-btn">Write a new tweet</span>
-        <div class="write-tweet-arrow"><i class="fa-solid fa-angle-down"></i></div>
-      </div>
-    </nav>
-
-    <header class="profile-header-format">
-      <div>
-          <img src="/images/profile-hex.png"> 
-      </div>
-      <br>
-      <div>
-          <h2>Your Name</h2>
-      </div>
+  <!-- body header -->
+  <header class="header">
+    <div class="header-image">
+      <img src="/images/profile-hex.png">
+      <!-- <img src="/images/elon_profPic.png"> -->
+    </div>
+    <!-- <h2 class="header-username">Your Name</h2> -->
+    <p class="header-username"><b>Joseph</b> Doba</p>
   </header>
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
-        <h2>Compose Tweet</h2>
-        <form method="POST" action="/tweets">
-          <label for="tweet-text" class="tweet-text-header"></label>
-          <textarea name="text" class="tweet-text tweet-text-header" placeholder="What are you humming about?" maxlength="140"></textarea> 
-          <hr></hr>
-          <div class="submit-btn-counter">
-            <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
+
+  <!-- Page-specific (main) content here -->
+  <main class="container">
+    <!-- compose new tweet section  -->
+    <section class="new-tweet">
+      <form method="POST" action="/tweets"> <!-- .new-tweet form -->
+        <label for="tweet-text">What project are we schilling today?</label> <!-- .new-tweet form label -->
+        <textarea name="text" maxlength="140" class="new-tweet-form-textarea"></textarea> <!-- .new-tweet form textarea -->
+        <div class="new-tweet-form-div"> <!-- .new-tweet form div -->
+          <button type="submit">Tweet</button>
+          <output name="counter" class="counter" for="tweet-text">140</output>
+        </div>
+      </form>
+    </section>
+
+    <!-- start of all tweets container-->
+    <section class="tweets-container" id="tweets-container">
+      <article>
+        <header class="existing-tweet-header">
+            <!-- <img src="/images/profile-hex.png" class="tweets-container-header-img" alt=""> .tweet header img -->
+          <div>
+            <i class="fa-solid fa-face-laugh-squint"></i>
+            <p>Newton</p>
           </div>
-        </form>
-      </section>
-    </main>
-  </body>
+          <p class="existing-tweet-handle">@SirIsaac</p>
+        </header>
+        <main class="existing-tweet-body"> <!-- .tweet main p -->
+          <p>I have seen more on the shoulders of Giants</p>
+        </main>
+        <footer class="existing-tweet-footer"> <!-- .tweet footer-->
+          <p>posted 10 days ago</p>
+          <div> <!-- .tweet footer i-->
+            <i class="fa-solid fa-flag"></i>
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-solid fa-heart"></i>
+          </div>
+        </footer>
+      </article>
+    </section>
+  </main>
+</body>
+
 </html>
