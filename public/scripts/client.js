@@ -69,20 +69,37 @@ $(document).ready(function(event) {
 
   $("form").on("submit", function(event) {
     event.preventDefault();
+    // console.log(event);
+    const valueText = $(".new-tweet-form-textarea").val();
+    
+    // if (event.data === undefined || event.data === "" || event.data === null) {
+    //   return console.log("You can't send an empty tweet");
+    // }
+
     const data = $(this).serialize();
-    // const data = $(".new-tweet-form-div").serialize();
-    console.log(data);
-    // $.ajax("/tweets", { method : "post", data
-    // });
-    $.ajax({
-      url: `/tweets`,
-      type: 'POST',
-      data
-    })
-    .then(data => {
-      loadTweets();
-      console.log(data);
-    });
+    // console.log(data);
+    if (!valueText) {
+      alert("You can't send an empty tweet");
+    } else if (valueText.length > 140) {
+      alert("Your tweet has to be under 141 characters");
+    }
+    
+    else {
+      $.ajax({
+        url: `/tweets`,
+        type: 'POST',
+        data
+      })
+        .then(data => {
+          loadTweets();
+          console.log(data);
+        });
+
+    }
+  
+    // if (data === "" || data === undefined || data === null) {
+    //   return console.log("You can't send an empty tweet");
+    // }
   });
 
 
