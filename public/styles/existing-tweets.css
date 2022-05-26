@@ -31,7 +31,6 @@
  .existing-tweet-body {
   display: flex;
   justify-content: flex-start;
-  margin-left: 30px;
  }
 
  .existing-tweet-body main {
