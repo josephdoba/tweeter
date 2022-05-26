@@ -11,7 +11,7 @@ $(document).ready(function(event) {
         "name": "Newton",
         "avatars": "https://i.imgur.com/73hZDYK.png"
         ,
-        "handle": "SirIsaac"
+        "handle": "@SirIsaac"
       },
       "content": {
         "text": "If I have seen further it is by standing on the shoulders of giants"
@@ -22,7 +22,7 @@ $(document).ready(function(event) {
       "user": {
         "name": "Descartes",
         "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "rd" },
+        "handle": "@rd" },
       "content": {
         "text": "Je pense , donc je suis"
       },
@@ -44,10 +44,10 @@ $(document).ready(function(event) {
     let $tweet = `<article>
       <header class="existing-tweet-header">
         <div>
-          <i class="fa-solid fa-face-laugh-squint"></i>
+        <img src="${tweet.user.avatars}" class="tweets-container-header-img" alt="">
           <p>${tweet.user.name}</p>
         </div>
-        <p class="existing-tweet-handle">@${tweet.user.handle}</p>
+        <p class="existing-tweet-handle">${tweet.user.handle}</p>
       </header>
       <main class="existing-tweet-body"> 
         <p>${tweet.content.text}</p>
@@ -72,10 +72,8 @@ $(document).ready(function(event) {
     const data = $(this).serialize();
     // const data = $(".new-tweet-form-div").serialize();
     console.log(data);
-    $.ajax("/tweets", { method : "post", data}
-      .then(() => {
-      // make an api call for a GET request to the FetchTweets, and append the newest one
-      }));
+    $.ajax("/tweets", { method : "post", data
+    });
   });
     
   
