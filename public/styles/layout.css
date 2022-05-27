@@ -17,6 +17,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   color: #545149;
 }
+
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
@@ -25,10 +26,67 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 75%;
+  /* width: 75%; */
   margin: 0 auto;
  }
  
  section article {
-  min-width: 900px;
- };
+   min-width: 900px;
+ }
+
+  /* Media Layouts: */
+  /* Mobile (under 768px width) */
+  @media all and (max-width: 849px) {
+    main.container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 75%;
+      margin: 0 auto;
+    }
+
+    section article {
+      min-width: 350px;
+    }
+  }
+
+  /* Tablet (850 to 1300px.) */
+  @media all and (min-width: 850px) {
+    main.container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 75%;
+      margin: 0 auto;
+     }
+    
+    section article {
+      min-width: 650px;
+    }
+  }
+
+  /* Laptop/Desktops (greater than 1111px) */
+  @media all and (min-width: 1300px) {
+    body {
+      display: flex;
+    }
+    
+    section article {
+      min-width: 900px;
+    }
+    
+    form {
+      margin-top: 80px;
+    }
+    
+    .new-tweet {
+      width: 90%;
+      margin: 1em 0;
+    }
+
+}
+
+
+
+
+
