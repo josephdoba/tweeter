@@ -52,57 +52,44 @@ $(document).ready(function(event) {
     event.preventDefault();
     
     // sanitize entry point:
-    const valueText = escape($(".new-tweet-form-textarea").val());
-    console.log(`valueText: ${valueText}`);
-    console.log(typeof(valueText));
-    
-    // $("<script>").text(valueText);
-    // $("<div>").text(valueText);
-    const safeHTML = `<p>${valueText}</p>`;
-  
-
-    // const data = $("<script>").text();
-    // const data = $("<script>").text(valueText);
-    // const data = $(valueText).text();
-    // const data = $(valueText).serialize();
-    // const data = escape($(this).serialize());
-
+    const tweetText = escape($(".new-tweet-form-textarea").val());
+    const safeHTML = `<p>${tweetText}</p>`;
     const data = $(this).serialize();
-    console.log(safeHTML);
-    console.log(`data: ${data}`);
+    const $emptyError = "You can't send an empty tweet!";
+    const $lengthError = "Tweet too long. Must be within 140 chars.";
+    // console.log(`tweetText: ${tweetText}`);
+    // console.log(typeof(tweetText));
+    // console.log(safeHTML);
+    // console.log(`data: ${data}`);
 
     // check if empty or over 140 characters.
-    if (!valueText) {
-      alert("You can't send an empty tweet");
+    if (!tweetText) {
+      $(".new-tweet-error").slideDown(200, function() {
+      //   // console.log("(From slidedown):You can't send an empty tweet");
+        $(".new-tweet-error").text($emptyError);
+      });
+      // $(".new-tweet-error").slideUp("slow", function() {
+      // });
 
-    } else if (valueText.length > 140) {
-      alert("Your tweet has to be under 141 characters");
+    } else if (tweetText.length > 140) {
+      $(".new-tweet-error").slideDown("slow", function() {
+        console.log("(From slidedown): Tweet too long. Must be within 140 chars");
+        $(".new-tweet-error").text($lengthError);
+      });
+      
+      
+    } else {
+      $(".new-tweet-error").slideUp(200, function() {
+        console.log("No errors.. tweeting");
+      });
 
-    }
-    
-    //   else {
-    //     $.ajax({
-    //       url: `/tweets`,
-    //       type: 'POST',
-    //       data: data
-    //     })
-    //       .then(data => {
-    //         loadTweets();
-    //       });
-    //   }
-    // });
-    else {
       $.ajax({
         url: '/tweets',
         type: 'POST',
-        data,
-        // dataType: 'text',
-        success: function() {console.log("success within the .ajax")}
-      })
-        .then(data => {
-          loadTweets();
-        });
-        
+        data: data
+      }).then(data => {
+        loadTweets();
+      });
     }
   });
 

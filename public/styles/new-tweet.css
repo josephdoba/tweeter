@@ -31,4 +31,7 @@
   font-family: 'Bungee', sans-serif;
 }
 
-
+.counter-over {
+  color: red;
+  font-weight: bold;
+}
