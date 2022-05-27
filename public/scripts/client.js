@@ -1,35 +1,19 @@
 /*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
+* Client-side JS logic goes here
+* jQuery is already loaded
+* Reminder: Use (and do all your DOM work in) jQuery's document ready function
+*/
 
 $(document).ready(function(event) {
-// Test / driver code (temporary). Eventually will get this from the server.
-  // const data = [
-  //   {
-  //     "user": {
-  //       "name": "Newton",
-  //       "avatars": "https://i.imgur.com/73hZDYK.png"
-  //       ,
-  //       "handle": "@SirIsaac"
-  //     },
-  //     "content": {
-  //       "text": "If I have seen further it is by standing on the shoulders of giants"
-  //     },
-  //     "created_at": 1461116232227
-  //   },
-  //   {
-  //     "user": {
-  //       "name": "Descartes",
-  //       "avatars": "https://i.imgur.com/nlhLi3I.png",
-  //       "handle": "@rd" },
-  //     "content": {
-  //       "text": "Je pense , donc je suis"
-  //     },
-  //     "created_at": 1461116959088
-  //   }
-  // ];
+  // test: <script>alert("uh oh")</script>
+  // test: <script>$("body").empty();</script>
+  
+  // Cross-site Scripting escape function:
+  const escape = function(str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
 
   const createTweetElement = function(tweet) {
     let $tweet = `<article>
@@ -41,7 +25,7 @@ $(document).ready(function(event) {
     <p class="existing-tweet-handle">${tweet.user.handle}</p>
     </header>
     <main class="existing-tweet-body"> 
-    <p>${tweet.content.text}</p>
+    <p>${escape(tweet.content.text)}</p>
     </main>
     <footer class="existing-tweet-footer"> 
     <p>${timeago.format(new Date(tweet.created_at))}</p>
@@ -52,81 +36,85 @@ $(document).ready(function(event) {
     </div>
     </footer>
     </article>`;
-    
     return $tweet;
   };
-  
+
   const renderTweets = function(tweets) {
     $('#tweets-container').empty();
     for (let i = 0; i < tweets.length; i++) {
       let $tweet = createTweetElement(tweets[i]);
       $('#tweets-container').prepend($tweet);
     }
-  // takes return value and appends it to the tweets container
   };
   
-  // renderTweets(data);
 
   $("form").on("submit", function(event) {
     event.preventDefault();
-    // console.log(event);
-    const valueText = $(".new-tweet-form-textarea").val();
     
-    // if (event.data === undefined || event.data === "" || event.data === null) {
-    //   return console.log("You can't send an empty tweet");
-    // }
+    // sanitize entry point:
+    const valueText = escape($(".new-tweet-form-textarea").val());
+    console.log(`valueText: ${valueText}`);
+    console.log(typeof(valueText));
+    
+    // $("<script>").text(valueText);
+    // $("<div>").text(valueText);
+    const safeHTML = `<p>${valueText}</p>`;
+  
+
+    // const data = $("<script>").text();
+    // const data = $("<script>").text(valueText);
+    // const data = $(valueText).text();
+    // const data = $(valueText).serialize();
+    // const data = escape($(this).serialize());
 
     const data = $(this).serialize();
-    // console.log(data);
+    console.log(safeHTML);
+    console.log(`data: ${data}`);
+
+    // check if empty or over 140 characters.
     if (!valueText) {
       alert("You can't send an empty tweet");
+
     } else if (valueText.length > 140) {
       alert("Your tweet has to be under 141 characters");
+
     }
     
+    //   else {
+    //     $.ajax({
+    //       url: `/tweets`,
+    //       type: 'POST',
+    //       data: data
+    //     })
+    //       .then(data => {
+    //         loadTweets();
+    //       });
+    //   }
+    // });
     else {
       $.ajax({
-        url: `/tweets`,
+        url: '/tweets',
         type: 'POST',
-        data
+        data,
+        // dataType: 'text',
+        success: function() {console.log("success within the .ajax")}
       })
         .then(data => {
           loadTweets();
-          console.log(data);
         });
-
+        
     }
-  
-    // if (data === "" || data === undefined || data === null) {
-    //   return console.log("You can't send an empty tweet");
-    // }
   });
-
-
-  /*
-$.ajax({
-      url: `/api/${val}`,
-      type: 'GET',
-    })
-    .then(data => {
-      console.log(data)
-      $('.results').append(showResults(data));
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  */
 
   const loadTweets = function() {
     $.ajax({
       url: `/tweets`,
       type: `GET`
     })
-    .then(data => {
-      renderTweets(data);
-    });
+      .then(data => {
+        renderTweets(data);
+      });
   };
-
   loadTweets();
 
 });
