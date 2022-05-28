@@ -1,5 +1,4 @@
-
-
+/* Tweets: */
 .new-tweet {
   width: 90%;
   margin: 1em 0;
@@ -27,10 +26,30 @@
   justify-content: space-between;
 }
 
+/* Tweet Button: */
+.new-tweet-btn {
+  font-family: 'Bungee', sans-serif;
+  color: whitesmoke;
+  background-color: #00345c;
+}
+
 .submit-btn-counter {
   display: flex;
   justify-content: space-between;
   font-family: 'Bungee', sans-serif;
+}
+
+/* Error styling: */
+
+.new-tweet-error {
+  color: red;
+  font-weight: bold;
+}
+
+.new-tweet-error-border {
+  color: red;
+  font-weight: bold;
+  border: 1px solid red;
 }
 
 .counter-over {

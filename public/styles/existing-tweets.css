@@ -5,37 +5,36 @@
   border-style: solid;
   padding: 10px;
   margin: 10px;
- }
+  border-color: red;
+}
 
- /* .tweets-container-header-img {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
- } */
+ .existing-tweet-article {
+  border: 1px solid #545149;
+  margin: 10px;
+  padding: 10px;
+}
+
  .existing-tweet-header {
   display: flex;
-  flex-direction: row;
+  align-content: flex-start;
   align-items: center;
   justify-content: space-between;
- }
+}
 
  .existing-tweet-header div {
   display: flex;
   align-items: center;
 }
-
-.fa-face-laugh-squint {
-  padding-right: 5px;
-}
-
  .existing-tweet-body {
   display: flex;
   justify-content: flex-start;
- }
+  word-break: break-all;
+  border-bottom: 1px solid black;
+}
 
  .existing-tweet-body main {
    display: flex;
- }
+}
 
  .existing-tweet-footer {
   display: flex;
@@ -43,12 +42,8 @@
   align-items: center;
   justify-content: space-between;
   font-size: smaller;
- }
-
- /* .existing-tweet-icons {
-   display:flex;
- } */
+}
  
  .existing-tweet-handle {
    color: #24a8ff;
- }
+}

@@ -5,9 +5,11 @@
 */
 
 $(document).ready(function(event) {
-  // test: <script>alert("uh oh")</script>
-  // test: <script>$("body").empty();</script>
+  // test scripts: <script>alert("uh oh")</script>, <script>$("body").empty();</script>
   
+
+  // Initialize jQuery and setup:
+
   // Cross-site Scripting escape function:
   const escape = function(str) {
     let div = document.createElement("div");
@@ -16,7 +18,7 @@ $(document).ready(function(event) {
   };
 
   const createTweetElement = function(tweet) {
-    let $tweet = `<article>
+    let $tweet = `<article class="existing-tweet-article">
     <header class="existing-tweet-header">
     <div>
     <img src="${tweet.user.avatars}" class="tweets-container-header-img" alt="">
@@ -39,6 +41,7 @@ $(document).ready(function(event) {
     return $tweet;
   };
 
+  // Show newest tweets first:
   const renderTweets = function(tweets) {
     $('#tweets-container').empty();
     for (let i = 0; i < tweets.length; i++) {
@@ -46,41 +49,40 @@ $(document).ready(function(event) {
       $('#tweets-container').prepend($tweet);
     }
   };
-  
 
+  // User clicked on Tweet button:
   $("form").on("submit", function(event) {
     event.preventDefault();
-    
     // sanitize entry point:
     const tweetText = escape($(".new-tweet-form-textarea").val());
     const safeHTML = `<p>${tweetText}</p>`;
     const data = $(this).serialize();
-    const $emptyError = "You can't send an empty tweet!";
-    const $lengthError = "Tweet too long. Must be within 140 chars.";
-    // console.log(`tweetText: ${tweetText}`);
-    // console.log(typeof(tweetText));
-    // console.log(safeHTML);
-    // console.log(`data: ${data}`);
+    const $emptyError = `You can't send an empty tweet!`;
+    const $errorIcon = `<i class="fa-solid fa-circle-exclamation"></i>`;
+    const $lengthError = `Tweet too long. Must be within 140 chars.`;
 
-    // check if empty or over 140 characters.
+    // check if empty:
     if (!tweetText) {
       $(".new-tweet-error").slideDown(200, function() {
-      //   // console.log("(From slidedown):You can't send an empty tweet");
+        $(".new-tweet-error").toggleClass("new-tweet-error-border");
         $(".new-tweet-error").text($emptyError);
+        $(".new-tweet-error").append($errorIcon);
+        $(".new-tweet-error").prepend($errorIcon);
       });
-      // $(".new-tweet-error").slideUp("slow", function() {
-      // });
 
+      //Check if over 140 characters:
     } else if (tweetText.length > 140) {
       $(".new-tweet-error").slideDown("slow", function() {
-        console.log("(From slidedown): Tweet too long. Must be within 140 chars");
+        $(".new-tweet-error").toggleClass("new-tweet-error-border");
         $(".new-tweet-error").text($lengthError);
+        $(".new-tweet-error").append($errorIcon);
+        $(".new-tweet-error").prepend($errorIcon);
       });
       
-      
+    // If cleared, post to server:
     } else {
       $(".new-tweet-error").slideUp(200, function() {
-        console.log("No errors.. tweeting");
+        $(".new-tweet-error").toggleClass("new-tweet-error-border");
       });
 
       $.ajax({
@@ -93,6 +95,7 @@ $(document).ready(function(event) {
     }
   });
 
+  // reload the tweets
   const loadTweets = function() {
     $.ajax({
       url: `/tweets`,
@@ -102,6 +105,7 @@ $(document).ready(function(event) {
         renderTweets(data);
       });
   };
-  loadTweets();
 
+  //initial page load tweets
+  loadTweets();
 });

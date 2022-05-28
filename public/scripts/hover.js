@@ -1,5 +1,6 @@
+// Placeholder file for when/if the time comes to make the buttons clickable
+
 $(document).ready(function(event) {
-  console.log("Hello from hover.js");
 
   $(".fa-flag").mouseenter(function() {
   }).mouseleave(function() {

@@ -22,68 +22,58 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- main.container {
+main.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* width: 75%; */
+  width: 90%;
   margin: 0 auto;
- }
- 
- section article {
-   min-width: 900px;
- }
+}
 
-  /* Media Layouts: */
-  /* Mobile (under 768px width) */
-  @media all and (max-width: 849px) {
-    main.container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 75%;
-      margin: 0 auto;
-    }
+section article {
+  min-width: 900px;
+}
 
-    section article {
-      min-width: 350px;
-    }
+/* Media Layouts: */
+/* Mobile (under 768px width) */
+@media all and (max-width: 849px) {
+  main.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+    margin: 0 auto;
   }
 
-  /* Tablet (850 to 1300px.) */
-  @media all and (min-width: 850px) {
-    main.container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 75%;
-      margin: 0 auto;
-     }
-    
-    section article {
-      min-width: 650px;
-    }
+  section article {
+    min-width: 350px;
+  }
+}
+
+/* Tablet (850 to 1300px.) */
+@media all and (min-width: 850px) {
+  main.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+    margin: 0 auto;
   }
 
-  /* Laptop/Desktops (greater than 1111px) */
-  @media all and (min-width: 1300px) {
-    body {
-      display: flex;
-    }
-    
-    section article {
-      min-width: 900px;
-    }
-    
-    form {
-      margin-top: 80px;
-    }
-    
-    .new-tweet {
-      width: 90%;
-      margin: 1em 0;
-    }
+  section article {
+    min-width: 650px;
+  }
+}
 
+  /* Laptop/Desktops (greater than 1024px) */
+@media all and (min-width: 1024px) {
+  body {
+    display: flex;
+  }
+
+  form {
+    margin-top: 80px;
+  }
 }
 
 

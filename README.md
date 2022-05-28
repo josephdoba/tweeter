@@ -1,10 +1,12 @@
-# Tweeter Project
+# Tweeter: Elons Pump & Dump schemes and NFTs - a Twitter Clone
 
 Tweeter is a simple, single-page Twitter clone.
 
-This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express back-end skills.
+Who says only the wealthy get to stay wealthy? With this twitter clone, you will be able to schill all sorts of obscure and mostly useless crypto projects to the world, and make thicc profits for your own personal gain! 
 
-## Getting Started
+With this project, I practiced HTML, CSS, JS, jQuery and AJAX front-end skills, alongside with Node, and Express back-end skills.
+
+## How to get Ri.. I mean Getting Started
 
 1. [Create](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) a new repository using this repository as a template.
 2. Clone your repository onto your local device.
@@ -18,4 +20,3 @@ This repository is the starter code for the project: Students will fork and clon
 - Node 5.10.x or above
 - jQuery
 - timeago
-

@@ -52,7 +52,6 @@
       <img src="/images/profile-hex.png">
       <!-- <img src="/images/elon_profPic.png"> -->
     </div>
-    <!-- <h2 class="header-username">Your Name</h2> -->
     <p class="header-username"><b>Elon</b> Musk</p>
   </header>
 
@@ -60,12 +59,12 @@
   <main class="container">
     <!-- compose new tweet section  -->
     <section class="new-tweet">
-      <p class="new-tweet-error counter-over"></p>
-      <form> <!-- .new-tweet form -->
+      <form>
+        <p class="new-tweet-error"></p>
         <label for="tweet-text">What project are we schilling today?</label> <!-- .new-tweet form label -->
         <textarea name="text" class="new-tweet-form-textarea"></textarea> <!-- .new-tweet form textarea -->
         <div class="new-tweet-form-div"> <!-- .new-tweet form div -->
-          <button type="submit">Tweet</button>
+          <button type="submit" class="new-tweet-btn">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
         </div>
       </form>
@@ -73,34 +72,7 @@
 
     <!-- start of all tweets container-->
     <section class="existing-tweet-container" id="tweets-container">
-      <!-- new and existing tweets render here -->
-      <!-- .tweet header img  -->
-      <!-- .tweet main p -->
-      <!-- .tweet footer-->
-      <!-- .tweet footer i-->
-
-     
-        <!-- <article>
-        <header class="existing-tweet-header">
-            <img src="/images/profile-hex.png" class="tweets-container-header-img" alt=""> 
-          <div>
-            <i class="fa-solid fa-face-laugh-squint"></i>
-            <p>Newton</p>
-          </div>
-          <p class="existing-tweet-handle">@SirIsaac</p>
-        </header>
-        <main class="existing-tweet-body"> 
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque feugiat faucibus est, id pretium ante accumsan vitae. Vestibulum nunc!.</p>
-        </main>
-        <footer class="existing-tweet-footer"> 
-          <p>posted 10 days ago</p>
-          <div> 
-            <i class="fa-solid fa-flag"></i>
-            <i class="fa-solid fa-retweet"></i>
-            <i class="fa-solid fa-heart"></i>
-          </div>
-        </footer>
-      </article> -->
+        <!-- new tweets load up here -->
    
     </section>
   </main>
