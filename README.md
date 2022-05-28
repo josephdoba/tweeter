@@ -6,6 +6,10 @@ Who says only the wealthy get to stay wealthy? With this twitter clone, you will
 
 With this project, I practiced HTML, CSS, JS, jQuery and AJAX front-end skills, alongside with Node, and Express back-end skills.
 
+![](https://github.com/josephdoba/tweeter/blob/master/docs/tweeter_shot1.png)
+
+![](https://github.com/josephdoba/tweeter/blob/master/docs/tweeter_shot2.png)
+
 ## How to get Ri.. I mean Getting Started
 
 1. [Create](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) a new repository using this repository as a template.
