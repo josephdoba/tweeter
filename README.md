@@ -20,3 +20,4 @@ With this project, I practiced HTML, CSS, JS, jQuery and AJAX front-end skills, 
 - Node 5.10.x or above
 - jQuery
 - timeago
+- bodyparser
