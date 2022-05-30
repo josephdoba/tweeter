@@ -103,6 +103,9 @@ $(document).ready(function(event) {
     })
       .then(data => {
         renderTweets(data);
+      })
+      .catch(data => {
+        console.log("Something went wrong. Line 108 client.js");
       });
   };
 
