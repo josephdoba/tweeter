@@ -5,10 +5,6 @@
 */
 
 $(document).ready(function(event) {
-  // test scripts: <script>alert("uh oh")</script>, <script>$("body").empty();</script>
-  
-
-  // Initialize jQuery and setup:
 
   // Cross-site Scripting escape function:
   const escape = function(str) {
@@ -18,25 +14,26 @@ $(document).ready(function(event) {
   };
 
   const createTweetElement = function(tweet) {
-    let $tweet = `<article class="existing-tweet-article">
-    <header class="existing-tweet-header">
-    <div>
-    <img src="${tweet.user.avatars}" class="tweets-container-header-img" alt="">
-    <p>${tweet.user.name}</p>
-    </div>
-    <p class="existing-tweet-handle">${tweet.user.handle}</p>
-    </header>
-    <main class="existing-tweet-body"> 
-    <p>${escape(tweet.content.text)}</p>
-    </main>
-    <footer class="existing-tweet-footer"> 
-    <p>${timeago.format(new Date(tweet.created_at))}</p>
-    <div> 
-    <i class="fa-solid fa-flag"></i>
-    <i class="fa-solid fa-retweet"></i>
-    <i class="fa-solid fa-heart"></i>
-    </div>
-    </footer>
+    let $tweet = `
+    <article class="existing-tweet-article">
+      <header class="existing-tweet-header">
+        <div>
+          <img src="${tweet.user.avatars}" class="tweets-container-header-img" alt="">
+          <p>${tweet.user.name}</p>
+        </div>
+        <p class="existing-tweet-handle">${tweet.user.handle}</p>
+      </header>
+      <main class="existing-tweet-body"> 
+        <p>${escape(tweet.content.text)}</p>
+      </main>
+      <footer class="existing-tweet-footer"> 
+        <p>${timeago.format(new Date(tweet.created_at))}</p>
+        <div> 
+          <i class="fa-solid fa-flag"></i>
+          <i class="fa-solid fa-retweet"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+      </footer>
     </article>`;
     return $tweet;
   };
@@ -54,7 +51,7 @@ $(document).ready(function(event) {
   $("form").on("submit", function(event) {
     event.preventDefault();
     // sanitize entry point:
-    const tweetText = escape($(".new-tweet-form-textarea").val());
+    let tweetText = escape($(".new-tweet-form-textarea").val());
     const safeHTML = `<p>${tweetText}</p>`;
     const data = $(this).serialize();
     const $emptyError = `You can't send an empty tweet!`;
@@ -70,7 +67,7 @@ $(document).ready(function(event) {
         $(".new-tweet-error").prepend($errorIcon);
       });
 
-      //Check if over 140 characters:
+    // Check if over 140 characters:
     } else if (tweetText.length > 140) {
       $(".new-tweet-error").slideDown("slow", function() {
         $(".new-tweet-error").toggleClass("new-tweet-error-border");
@@ -92,6 +89,9 @@ $(document).ready(function(event) {
       }).then(data => {
         loadTweets();
       });
+      // clear textbox field and reset character count
+      $(".new-tweet-form-textarea").val("");
+      $('.counter').text(140);
     }
   });
 
